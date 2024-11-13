@@ -1,0 +1,189 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Menu da tela principal */
+
+body {
+    margin: 0;
+}
+
+header {
+    background-color: #2B5F8C; /* Cor do fundo */
+    display: flex;
+    justify-content: space-between; /* Alinha logo e links nas extremidades */
+    align-items: center; /* Centraliza os itens verticalmente */
+    padding: 8px 40px; /* Espaçamento interno do header */
+    font-family: 'Montserrat', sans-serif;
+    
+}
+
+header .logo {
+    display: flex;
+    align-items: center; /* Alinha verticalmente logo e h1 */
+}
+
+header .logo img {
+    margin-right: 10px; /* Espaço entre a logo e o título */
+}
+
+header > h1 {
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0; /* Remove margem padrão */
+    padding-right: 730px;
+}
+
+header nav {
+    display: flex;
+    gap: 20px; /* Espaço entre os links */
+}
+
+header nav a {
+    color: white;
+    font-weight: 500;
+    padding: 10px 10px; /* Espaçamento nos links */
+    text-decoration: none;
+    transition: background-color 0.2s ease; /* Efeito suave para hover */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+}
+
+header nav a:hover {
+    background-color: #64798C; /* Cor de fundo ao passar o mouse */
+    border-radius: 5px; /* Bordas arredondadas ao passar o mouse */
+}
+
+
+/* Início do site */
+
+.container {
+    display: flex; /* Usa flexbox para alinhar os elementos lado a lado */
+    gap: 20px; /* Espaço entre a imagem e o parágrafo */
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #639CBF; 
+    margin: 0;
+    margin-top: 20px;
+    width: 100vw; 
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: black;
+    width: 100%;
+}
+
+.container p {
+    /* Permite que o parágrafo ocupe o espaço restante disponível */
+    font-size: 18px; /* Ajusta o tamanho da fonte para o parágrafo */
+    line-height: 1.6; /* Aumenta a altura da linha para melhorar a legibilidade */
+    color: #333; /* Cor do texto do parágrafo */
+    width: 50%;
+    margin: 0;
+    margin-bottom: 5px;
+    margin-top: 0;
+    padding-top: 30px;
+    font-family: 'Open-sans', sans-serif;
+}
+
+.text-container {
+    flex: 1;
+    display: flex; /* Certifique-se de que o parágrafo e o botão sejam organizados horizontalmente */
+    flex-direction: column;
+    gap: 15px; /* Espaço entre o parágrafo e o botão */
+}
+
+.text-container > p {
+    flex: 1; /* Permite que o parágrafo ocupe o espaço restante disponível */
+    font-size: 18px; /* Ajusta o tamanho da fonte para o parágrafo */
+    line-height: 1.6; /* Aumenta a altura da linha para melhorar a legibilidade */
+    color: rgba(0, 0, 0, 0.589); /* Cor do texto do parágrafo */
+    margin-bottom: 5px;
+    margin-top: 70px;
+    font-family: 'Open-sans', sans-serif;
+}
+
+/* Botao para agendar consulta */
+
+.btn-container {
+    display: flex;  /* Flexbox para centralizar o botão */
+    justify-content: center; /* Alinha o botão no centro horizontalmente */
+    width: 100%; /* Certifica-se de que a largura seja 100% */
+}
+
+.btn-agendar-consulta {
+    width: 220px;  /* Largura fixa para manter proporção */
+    padding: 5px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: white;
+    background-color: #1B3C59;  /* Cor de fundo */
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px rgba(61, 61, 231, 0.5); /* Sombra */
+}
+
+.btn-agendar-consulta:hover {
+    background-color: #0056b3;
+}
+
+/* Carrossel de imagens */
+
+#carouselExampleCaptions {
+    width: 50%;
+    flex-shrink: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    
+}
+
+.carousel-item {
+    width: 300%;
+}
+
+.container-carrossel {
+    width: 100vw; /* Garantir 100% da largura da tela */
+    margin: 0;
+    padding: 0; /* Remover padding extra */
+   
+}
+
+/* Cards */
+
+.container-carrossel-cards {
+    display: flex;
+    justify-content: center;
+    padding: 100px 10px; 
+    overflow: hidden;
+    width: 100%;
+}
+
+.card {
+    margin: 0 60px; /* Adiciona margem horizontal para garantir o espaçamento entre os cards */
+}
+
+.card-body {
+    font-size: 10px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #64798C;  /* Cor das setas */
+  
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    margin-left: -70px;
+    margin-right: -70px;
+    background-color: rgba(0, 0, 0, 0.5); /* Adiciona um fundo semitransparente */
+
+   
+}
+
+
