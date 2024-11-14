@@ -38,7 +38,7 @@ function validarFormulario(event) {
     }
 
     // 3. Validar os telefones (formato +55XX-XXXXXXXX)
-    const telefonePattern = /^\+55\d{2}-\d{8}$/;
+    const telefonePattern = /^\+55\d{2}-\d{9}$/;
     if (!telefonePattern.test(celular)) {
         alert("O campo 'Telefone Celular' deve estar no formato (+55)XX-XXXXXXXX.");
         return false;
