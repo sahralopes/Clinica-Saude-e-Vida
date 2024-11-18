@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,18 +10,17 @@
 <body class="login">
     <!--Tela de Login-->
     <div class="main-login">
-        <!-- Seção com logo e boas-vindas -->
         <div class="left-login">
             <div class="logo">
                 <img src="imagens/android-chrome- favicon branco 192x192.png" alt="Logo de coração">
             </div>
             <h1>Bem-vindo(a) ao site da nossa clínica: <br>Saúde & Vida!</h1>
         </div>
-        <!-- Seção com formulário de login -->
         <div class="right-login">
             <div class="card-login">
                 <h1>LOGIN</h1>
-                <!-- Formulário de login -->
+                <!-- Container para mensagens de feedback -->
+                <div id="feedback-message" class="feedback-message"></div>
                 <div class="textfield">
                     <label for="usuario">Usuário:</label>
                     <input type="text" id="usuario" name="usuario">
@@ -30,11 +29,8 @@
                     <label for="senha">Senha:</label>
                     <input type="password" id="senha" name="senha">
                 </div>
-                <!-- Botões de envio -->
                 <div class="botoes">
-                    <a href="index.html" target="_blank">
-                        <button disabled id="enviar" class="btn-enviar">Enviar</button>
-                    </a>
+                    <button id="enviar" class="btn-enviar">Enviar</button>
                     <a href="pag-cadastro.html">
                         <button id="cadastro" class="btn-cadastro">Cadastrar Novo Usuário</button>
                     </a>
