@@ -1,146 +1,117 @@
-// Função para exibir feedback
+// Elementos do formulário de cadastro
+const formCadastro = document.getElementById('form-cadastro');
+const feedbackMessage = document.getElementById('feedback-message');
+
+// Função para exibir mensagens de feedback
 function mostrarFeedback(mensagem, tipo) {
-    const feedbackMessage = document.getElementById('feedback-message');
     feedbackMessage.textContent = mensagem;
     feedbackMessage.className = `feedback-message ${tipo}`;
     feedbackMessage.style.display = 'block';
 
-    // Esconde o feedback após 3 segundos
     setTimeout(() => {
         feedbackMessage.style.display = 'none';
     }, 3000);
 }
 
-
-// Função para validar o formulário
-function validarFormulario(event) {
-    event.preventDefault();  // Impede o envio do formulário se houver um erro
-
-    // Obter os valores dos campos do formulário
-    const nomeCompleto = document.getElementById('nome-completo').value;
-    const dataNascimento = document.getElementById('data-nascimento').value;
-    const sexo = document.getElementById('sexo').value;
-    const nomeMaterno = document.getElementById('nome-materno').value;
-    const cpf = document.getElementById('cpf').value;
-    const celular = document.getElementById('celular').value;
-    const telefoneFixo = document.getElementById('telefone-fixo').value;
-    const endereco = document.getElementById('endereco').value;
-    const login = document.getElementById('login').value;
-    const senha = document.getElementById('senha').value;
-    const confirmarSenha = document.getElementById('confirmar-senha').value;
-
-    // 1. Verificar se todos os campos obrigatórios foram preenchidos
-    if (!nomeCompleto || !dataNascimento || !sexo || !nomeMaterno || !cpf || !celular || !telefoneFixo || !endereco || !login || !senha || !confirmarSenha) {
-        alert("Todos os campos devem ser preenchidos.");
-        return false;  // Interrompe a função e impede o envio do formulário
-    }
-
-    // 2. Validar o nome completo (mínimo 15 e máximo 60 caracteres alfabéticos)
-    const nomePattern = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/;  // Aceita apenas letras e espaços
-    if (nomeCompleto.length < 15 || nomeCompleto.length > 60 || !nomePattern.test(nomeCompleto)) {
-        alert("O campo 'Nome Completo' deve ter entre 15 e 60 caracteres alfabéticos.");
-        return false;  // Interrompe a função e impede o envio do formulário
-    }
-
-    // 3. Validar os telefones (formato +55XX-XXXXXXXX)
-    const telefonePattern = /^\+55\d{2}\d{9}$|^\d{2}-\d{9}$/; // Regex para o formato de telefone específico
-    if (!telefonePattern.test(celular)) {
-        alert("O campo 'Telefone Celular' deve estar no formato (+55)XX-XXXXXXXX ou XX-XXXXXXXXX.");
-        return false;
-    }
-    if (!telefonePattern.test(telefoneFixo)) {
-        alert("O campo 'Telefone Fixo' deve estar no formato (+55)XX-XXXXXXXX ou XX-XXXXXXXXX.");
-        return false;
-    }
-
-    // 4. Validar o login (exatamente 6 caracteres alfabéticos)
-    const loginPattern = /^[A-Za-z]{6}$/;  // Regex para exatamente 6 letras alfabéticas
-    if (!loginPattern.test(login)) {
-        alert("O campo 'Login' deve ter exatamente 6 caracteres alfabéticos.");
-        return false;
-    }
-
-    // 5. Validar a senha (exatamente 8 caracteres alfabéticos)
-    const senhaPattern = /^[A-Za-z]{8}$/;  // Regex para exatamente 8 letras alfabéticas
-    if (!senhaPattern.test(senha)) {
-        alert("O campo 'Senha' deve ter exatamente 8 caracteres alfabéticos.");
-        return false;
-    }
-
-    // 6. Validar se a senha e a confirmação de senha são iguais
-    if (senha !== confirmarSenha) {
-        alert("A 'Senha' e a 'Confirmar Senha' devem ser iguais.");
-        return false;
-    }
-
-    // Se todas as validações passarem, o formulário pode ser enviado
-    mostrarFeedback("Cadastro realizado com sucesso!", "success");
-    setTimeout(() => {
-        window.location.href = 'pag-login.html'; // ALTERADO
-    }, 3000);
-     }
-
-// Adicionar o evento de validação ao formulário
-document.getElementById('form-cadastro').addEventListener('submit', validarFormulario);
-
-// Referências aos campos do formulário
-const inputUsuarioCadastro = document.getElementById('usuario-cadastro');
-const inputSenhaCadastro = document.getElementById('senha-cadastro');
-const buttonCadastrar = document.getElementById('cadastrar');
-const feedbackCadastro = document.getElementById('feedback-cadastro');
-
-// Simulação de banco de dados
-const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-
-// Habilitar o botão "Cadastrar" apenas se ambos os campos estiverem preenchidos
-[inputUsuarioCadastro, inputSenhaCadastro].forEach(input => {
-    input.addEventListener('input', () => {
-        buttonCadastrar.disabled = !(inputUsuarioCadastro.value && inputSenhaCadastro.value);
-    });
-});
-
-// Função para mostrar mensagens de feedback no cadastro
-function mostrarFeedbackCadastro(mensagem, tipo) {
-    feedbackCadastro.textContent = mensagem;
-    feedbackCadastro.className = `feedback-message ${tipo}`;
-    feedbackCadastro.style.display = 'block';
-
-    // Esconde o feedback após 3 segundos
-    setTimeout(() => {
-        feedbackCadastro.style.display = 'none';
-    }, 3000);
+// Validação para o nome
+function validarNome(nome) {
+    const nomeRegex = /^[a-zA-Z\s]{15,60}$/; // 15 a 60 caracteres, alfabéticos e espaços permitidos
+    return nomeRegex.test(nome);
 }
 
-// Habilitar o botão "Cadastrar" apenas se ambos os campos estiverem preenchidos
-[inputUsuarioCadastro, inputSenhaCadastro].forEach(input => {
-    input.addEventListener('input', () => {
-        buttonCadastrar.disabled = !(inputUsuarioCadastro.value && inputSenhaCadastro.value);
-    });
-});
+// Validação para CPF (com ou sem pontuação)
+function validarCPF(cpf) {
+    const cpfRegex = /^(?:\d{3}\.\d{3}\.\d{3}-\d{2}|\d{11})$/; // Permite CPF com ou sem pontuação
+    return cpfRegex.test(cpf);
+}
 
-// Validação e cadastro
-buttonCadastrar.addEventListener('click', () => {
-    const usuario = inputUsuarioCadastro.value.trim();
-    const senha = inputSenhaCadastro.value.trim();
+// Validação para celular (padrão de celular no Brasil)
+function validarCelular(celular) {
+    const celularRegex = /^(?:\(?\d{2}\)?\s?)?\d{5}-\d{4}$/; // Formato (XX) XXXXX-XXXX ou XX XXXXX-XXXX
+    return celularRegex.test(celular);
+}
 
-    // Verificar se o usuário já existe
-    const usuarioExistente = usuarios.find(u => u.login === usuario);
+// Validação para login (exatamente 6 caracteres alfabéticos)
+function validarLogin(login) {
+    const loginRegex = /^[a-zA-Z]{6}$/; // Exatamente 6 caracteres alfabéticos
+    return loginRegex.test(login);
+}
 
-    if (usuarioExistente) {
-        mostrarFeedbackCadastro('Usuário já cadastrado. Escolha outro nome!', 'error');
-    } else {
-        // Adicionar novo usuário e salvar no Local Storage
-        usuarios.push({ login: usuario.trim(), senha: senha.trim() });
-        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+// Validação para senha (exatamente 8 caracteres alfabéticos)
+function validarSenha(senha) {
+    const senhaRegex = /^[a-zA-Z]{8}$/; // Exatamente 8 caracteres alfabéticos
+    return senhaRegex.test(senha);
+}
 
-        // Verificação dos dados armazenados
-        console.log('Usuários armazenados:', usuarios);
+// Função para validar o formulário de cadastro
+function validarCadastro() {
+    const nomeCompleto = document.getElementById('nome-completo').value.trim();
+    const cpf = document.getElementById('cpf').value.trim();
+    const celular = document.getElementById('celular').value.trim();
+    const login = document.getElementById('login').value.trim();
+    const senha = document.getElementById('senha').value.trim();
+    const confirmarSenha = document.getElementById('confirmar-senha').value.trim();
 
-        mostrarFeedbackCadastro('Usuário cadastrado com sucesso!', 'success');
+    // Validação do nome
+    if (!validarNome(nomeCompleto)) {
+        mostrarFeedback('O nome deve ter entre 15 e 60 caracteres alfabéticos, podendo conter espaços.', 'error');
+        return false;
+    }
 
-        // Limpar campos após cadastro
-        inputUsuarioCadastro.value = '';
-        inputSenhaCadastro.value = '';
-        buttonCadastrar.disabled = true;
+    // Validação do CPF
+    if (!validarCPF(cpf)) {
+        mostrarFeedback('O CPF deve ser válido, com ou sem pontuação.', 'error');
+        return false;
+    }
+
+    // Validação do celular
+    if (!validarCelular(celular)) {
+        mostrarFeedback('O celular deve estar no formato (XX) XXXX-XXXX ou (XX) XXXXX-XXXX.', 'error');
+        return false;
+    }
+
+    // Validação do login
+    if (!validarLogin(login)) {
+        mostrarFeedback('O login deve ter exatamente 6 caracteres alfabéticos.', 'error');
+        return false;
+    }
+
+    // Validação da senha
+    if (!validarSenha(senha)) {
+        mostrarFeedback('A senha deve ter exatamente 8 caracteres alfabéticos.', 'error');
+        return false;
+    }
+
+    // Verificação das senhas
+    if (senha !== confirmarSenha) {
+        mostrarFeedback('As senhas não coincidem.', 'error');
+        return false;
+    }
+
+    return true;
+}
+
+// Armazenar os dados do usuário no localStorage
+function salvarUsuario(login, senha) {
+    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    usuarios.push({ login, senha });
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+}
+
+// Evento de envio do formulário
+formCadastro.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    if (validarCadastro()) {
+        const login = document.getElementById('login').value.trim();
+        const senha = document.getElementById('senha').value.trim();
+
+        salvarUsuario(login, senha);
+        mostrarFeedback('Usuário cadastrado com sucesso!', 'success');
+
+        // Redirecionar para a página de login após o cadastro
+        setTimeout(() => {
+            window.location.href = 'pag-login.html';
+        }, 2000);
     }
 });
