@@ -31,6 +31,12 @@ function validarCelular(celular) {
     return celularRegex.test(celular);
 }
 
+// Validação para Telefone-Fixo 
+function validarCelular(telefonefixo) {
+    const celularRegex = /^(?:\(?\d{2}\)?\s?)?\d{5}-\d{4}$/; // Formato (XX) XXXXX-XXXX ou XX XXXXX-XXXX
+    return celularRegex.test(telefonefixo);
+}
+
 // Validação para login (exatamente 6 caracteres alfabéticos)
 function validarLogin(login) {
     const loginRegex = /^[a-zA-Z]{6}$/; // Exatamente 6 caracteres alfabéticos
@@ -48,6 +54,7 @@ function validarCadastro() {
     const nomeCompleto = document.getElementById('nome-completo').value.trim();
     const cpf = document.getElementById('cpf').value.trim();
     const celular = document.getElementById('celular').value.trim();
+    const telefonefixo = document.getElementById('telefone-fixo').value.trim();
     const login = document.getElementById('login').value.trim();
     const senha = document.getElementById('senha').value.trim();
     const confirmarSenha = document.getElementById('confirmar-senha').value.trim();
@@ -67,6 +74,12 @@ function validarCadastro() {
     // Validação do celular
     if (!validarCelular(celular)) {
         mostrarFeedback('O celular deve estar no formato (XX) XXXX-XXXX ou (XX) XXXXX-XXXX.', 'error');
+        return false;
+    }
+
+     // Validação do Telefone-Fixo
+     if (!validarCelular(telefonefixo)) {
+        mostrarFeedback('O Telefone Fixo deve estar no formato (XX) XXXX-XXXX ou (XX) XXXXX-XXXX.', 'error');
         return false;
     }
 

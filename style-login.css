@@ -142,6 +142,26 @@ body * {
     flex-wrap: wrap;
 }
 
+/* Mensagem de error e sucess */
+.feedback-message {
+    display: none;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.feedback-message.error {
+    color: #fff;
+    background-color: #f44336;
+}
+
+.feedback-message.success {
+    color: #fff;
+    background-color: #4CAF50;
+}
+
 /* Responsividade */
 
 @media only screen and (max-width: 950px) {
@@ -184,21 +204,4 @@ body * {
         width: 100%;
      }
 }
-.feedback-message {
-    display: none;
-    padding: 10px;
-    margin-top: 10px;
-    text-align: center;
-    border-radius: 5px;
-    font-size: 14px;
-}
 
-.feedback-message.error {
-    color: #fff;
-    background-color: #f44336;
-}
-
-.feedback-message.success {
-    color: #fff;
-    background-color: #4CAF50;
-}

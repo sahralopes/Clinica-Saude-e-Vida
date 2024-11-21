@@ -33,15 +33,14 @@ header .logo img {
 
 header > h1 {
     color: white;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 600;
-    margin: 0;
-    padding-right: 730px;
+    margin-right: 970px;
 }
 
 header nav {
     display: flex;
-    gap: 20px;
+    gap: 40px;
 }
 
 header nav a {
@@ -49,7 +48,7 @@ header nav a {
     font-weight: 500;
     padding: 10px 10px;
     text-decoration: none;
-    transition: background-color 0.2s ease;
+    transition: 0.2s ease;
     font-size: 13px;
 }
 
@@ -58,11 +57,69 @@ header nav a:hover {
     border-radius: 5px;
 }
 
+.btn-tema {
+    transition: all 0.5s ease;
+}
+
+.btn-tema:hover {
+    color: #64798C;
+}
+
+/* Menu */
+#dropdownMenuButton {
+    background-color: #2B5F8C;
+    color: white;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    font-size: 13px;
+    padding: 10px 10px;
+}
+
+#dropdownMenuButton:hover {
+    background-color: #64798C;
+    transform: scale(1.05);
+}
+
+.dropdown a {
+    font-size: 16px;
+    color: white;
+    background-color: #2B5F8C;
+}
+
+body {
+    background-color: #fff;
+    color: #000;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button {
+    background-color: #2B5F8C;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Estilos para o tema escuro */
+body.dark-mode {
+    background-color: #181717;
+    color: #fff;
+}
+
+body.dark-mode .container {
+    background-color: #2b2a2a;
+}
+
+body.dark-mode .header {
+    background-color: #2b2a2a;
+}
+
 /* Container principal */
 .container {
     display: flex;
     gap: 20px;
-    justify-content: space-between !important;
+    justify-content: space-between;
     align-items: center;
     background-color: #639CBF;
     margin-top: 20px;
@@ -71,25 +128,20 @@ header nav a:hover {
     width: 100%;
 }
 
-.container-carrossel{
-    
+.container-carrossel {
     padding: 0;
     justify-items: center;
 }
 
 /* Texto ao lado do carrossel */
-
 .container p {
-    /* Permite que o parágrafo ocupe o espaço restante disponível */
-    font-size: 18px; /* Ajusta o tamanho da fonte para o parágrafo */
-    line-height: 1.4; /* Aumenta a altura da linha para melhorar a legibilidade */
-    color: #fff; /* Cor do texto do parágrafo */
+    font-size: 18px;
+    line-height: 1.4;
+    color: #fff;
     width: 100%;
     margin: 0, 20px, 5px, 0;
-    
     padding: 30px, 50px, 0, 0;
     font-family: 'Open-sans', sans-serif;
-    
 }
 
 .text-container {
@@ -100,7 +152,7 @@ header nav a:hover {
     text-align: left;
     max-width: 50%;
     min-width: 40%;
-    padding-right: 50px ;
+    padding-right: 50px;
 }
 
 .text-container h1 {
@@ -144,7 +196,7 @@ header nav a:hover {
 
 /* Carrossel de imagens */
 #carouselExampleCaptions {
-    width: 80%; /* Tamanho reduzido */
+    width: 80%;
     border-radius: 10px;
     overflow: visible;
     flex-shrink: 0;
@@ -158,9 +210,14 @@ header nav a:hover {
 }
 
 .carousel-caption {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.226);
     padding: 10px;
     border-radius: 5px;
+}
+
+.carousel-caption p {
+    font-size: 22px;
+    font-weight: 600;
 }
 
 .carousel-control-prev-icon,
@@ -179,7 +236,7 @@ header nav a:hover {
 .container-carrossel-cards {
     display: flex;
     justify-content: center;
-    padding: 50px 10px;
+    padding: 100px 10px;
     overflow: hidden;
     width: 100%;
 }
@@ -197,7 +254,7 @@ header nav a:hover {
 }
 
 .card-body h5 {
-    font-size: 14px;
+    font-size: 16px;
     margin: 10px 0;
 }
 
@@ -221,58 +278,149 @@ header nav a:hover {
     border-radius: 50%;
 }
 
+/* Rodapé do site */
+footer {
+    background-color: #2B5F8C;
+    padding: 40px 0;
+}
+
+.footer-container {
+    max-width: 1400px;
+    padding: 0 4%;
+    margin: auto;
+}
+
+.row-footer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-col {
+    width: 25%;
+    padding: 0 15px;
+}
+
+.footer-col p {
+    color: white;
+}
+
+.footer-col h3 {
+    color: white;
+    margin-bottom: 30px;
+}
+
+.footer-col h4 {
+    font-size: 20px;
+    color: white;
+    margin-bottom: 30px;
+    font-weight: 500;
+    position: relative;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+.footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0;
+    width: fit-content;
+}
+
+.footer-col ul li a {
+    font-size: 18px;
+    color: white;
+    text-decoration: underline;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #64798C;
+    padding-left: 10px;
+}
+
+.footer-col .footer-social-media {
+    margin-top: 40px;
+}
+
+.footer-col .footer-social-media a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    margin: 0 10px 10px 0;
+    text-decoration: none;
+    border-radius: 50%;
+    color: white;
+    border: 1px solid white;
+    transition: all 0.5s ease;
+}
+
+.footer-col .footer-social-media a i {
+    font-size: 20px;
+}
+
+.footer-col .footer-social-media a:hover {
+    background-color: #64798C;
+}
+
 /* Responsividade */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     header {
         flex-direction: column;
+        align-items: flex-start;
         text-align: center;
     }
 
-    header h1 {
-        margin-bottom: 10px;
+    .text-container h1 {
+        font-size: 100px;
     }
 
     .container {
         flex-direction: column;
-    }
-
-    .text-container {
-        max-width: 100%;
         text-align: center;
     }
 
-    .text-container p {
-        font-size: 16px;
+    .container p {
+        padding: 10px;
     }
 
     .btn-agendar-consulta {
-        width: 180px;
+        width: 100%;
+    }
+
+    .carousel-caption p {
+        font-size: 18px;
     }
 
     .container-carrossel-cards {
         flex-direction: column;
     }
 
-    .card {
-        margin: 20px 0;
+    .footer-col {
+        width: 50%;
+        margin-bottom: 30px;
+    }
+
+    .footer-col h3, .footer-col ul li a {
+        font-size: 14px;
     }
 }
 
-@media (max-width: 480px) {
-    .btn-agendar-consulta {
-        font-size: 14px;
-        padding: 8px;
+@media screen and (max-width: 480px) {
+    .container p {
+        font-size: 16px;
     }
 
-    .card img {
-        width: 80px;
+    .container {
+        padding: 10px;
     }
 
-    .card-body h5 {
-        font-size: 12px;
-    }
-
-    .card-body .btn {
-        font-size: 10px;
+    .footer-col {
+        width: 100%;
     }
 }
