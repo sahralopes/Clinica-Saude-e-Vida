@@ -104,10 +104,10 @@ function validarCadastro() {
     return true;
 }
 
-// Armazenar os dados do usuário no localStorage
-function salvarUsuario(login, senha) {
+// Função para salvar os dados do usuário no localStorage
+function salvarUsuario(nomeCompleto, login, senha) {
     const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-    usuarios.push({ login, senha });
+    usuarios.push({ nomeCompleto, login, senha }); // Inclui nomeCompleto no objeto do usuário
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
 }
 
@@ -116,13 +116,17 @@ formCadastro.addEventListener('submit', (event) => {
     event.preventDefault();
 
     if (validarCadastro()) {
+        const nomeCompleto = document.getElementById('nome-completo').value.trim();
         const login = document.getElementById('login').value.trim();
         const senha = document.getElementById('senha').value.trim();
 
-        salvarUsuario(login, senha);
+        salvarUsuario(nomeCompleto, login, senha);
+
+        // Salva o nome completo e login no usuarioLogado
+        localStorage.setItem('usuarioLogado', JSON.stringify({ nomeCompleto, login }));
+
         mostrarFeedback('Usuário cadastrado com sucesso!', 'success');
 
-        // Redirecionar para a página de login após o cadastro
         setTimeout(() => {
             window.location.href = 'pag-login.html';
         }, 2000);

@@ -12,6 +12,7 @@ body, h1, p, a {
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
+    transition: background-color 0.5s, color 0.5s;
 }
 
 header {
@@ -40,7 +41,8 @@ header > h1 {
 
 header nav {
     display: flex;
-    gap: 40px;
+    gap: 10px;
+    margin: 0;
 }
 
 header nav a {
@@ -72,6 +74,13 @@ header nav a:hover {
     transition: background-color 0.2s ease, transform 0.2s ease;
     font-size: 13px;
     padding: 10px 10px;
+    border: none; 
+}
+
+.dropdown-menu {
+    max-height: 150px;
+    overflow-y: auto;
+    border: none; 
 }
 
 #dropdownMenuButton:hover {
@@ -83,6 +92,12 @@ header nav a:hover {
     font-size: 16px;
     color: white;
     background-color: #2B5F8C;
+}
+
+/* Remover o contorno ao focar no dropdown */
+#dropdownMenuButton:focus {
+    outline: none;
+    box-shadow: none;
 }
 
 body {
@@ -367,6 +382,66 @@ footer {
 .footer-col .footer-social-media a:hover {
     background-color: #64798C;
 }
+
+#userGreeting, .logoutButton{
+    color: white;
+    font-weight: 500;
+    padding: 10px 10px;
+    text-decoration: none;
+    transition: 0.2s ease;
+    font-size: 13px;
+    margin: 0;
+}
+
+#userGreeting:hover, .logoutButton:hover {
+    background-color: #64798C;
+    border-radius: 5px;
+}
+
+#icone-ajuste {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#ajuste-fonte-container {
+    position: fixed;
+    bottom: 80px; /* Ajuste a posição conforme necessário */
+    right: 20px;
+    background-color: white;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    width: 200px;
+    z-index: 1000;
+}
+
+/* Estilo do botão de ajuste */
+#btn-ajustar-fonte {
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btn-ajustar-fonte:hover {
+    background-color: #0056b3;
+}
+
+#fonte-slider {
+    width: 100%;
+    margin: 10px 0;
+}
+
+#fonte-tamanho {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
 
 /* Responsividade */
 @media screen and (max-width: 768px) {

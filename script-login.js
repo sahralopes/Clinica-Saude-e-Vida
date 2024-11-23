@@ -20,7 +20,7 @@ function mostrarFeedback(mensagem, tipo) {
 
 // Validação ao clicar no botão "Enviar"
 buttonEnviar.addEventListener('click', (e) => {
-    e.preventDefault(); // Impede o comportamento padrão do botão
+    e.preventDefault();
 
     const usuario = inputUsuario.value.trim();
     const senha = inputSenha.value.trim();
@@ -35,15 +35,17 @@ buttonEnviar.addEventListener('click', (e) => {
 
     if (usuarioCadastrado) {
         mostrarFeedback('Login realizado com sucesso! Redirecionando...', 'success');
-
-        // Armazena o login do usuário logado no localStorage
-        localStorage.setItem('loggedUser', usuario);
-
-        // Redireciona para a página principal
+    
+        // Salva o nome completo e login no usuarioLogado
+        localStorage.setItem('usuarioLogado', JSON.stringify({
+            nomeCompleto: usuarioCadastrado.nomeCompleto,
+            login: usuarioCadastrado.login
+        }));
+    
         setTimeout(() => {
             window.location.href = 'pag-principal.html';
         }, 2000);
-    } else {
+    } 
+    else {
         mostrarFeedback('Usuário ou senha inválidos.', 'error');
-    }
-});
+    }})
