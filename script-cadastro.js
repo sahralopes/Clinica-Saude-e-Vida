@@ -105,11 +105,17 @@ function validarCadastro() {
 }
 
 // Função para salvar os dados do usuário no localStorage
-function salvarUsuario(nomeCompleto, login, senha) {
+function salvarUsuario(nomeCompleto, login, senha, cpf) {
     const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-    usuarios.push({ nomeCompleto, login, senha }); // Inclui nomeCompleto no objeto do usuário
+
+    // Limpa o CPF antes de salvar no localStorage
+    const cpfLimpo = limparCpf(cpf);
+
+    // Inclui nomeCompleto e CPF limpo no objeto do usuário
+    usuarios.push({ nomeCompleto, login, senha, cpf: cpfLimpo });
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
 }
+
 
 // Evento de envio do formulário
 formCadastro.addEventListener('submit', (event) => {
@@ -119,16 +125,23 @@ formCadastro.addEventListener('submit', (event) => {
         const nomeCompleto = document.getElementById('nome-completo').value.trim();
         const login = document.getElementById('login').value.trim();
         const senha = document.getElementById('senha').value.trim();
+        const cpf = document.getElementById('cpf').value.trim(); // Pega o CPF
 
-        salvarUsuario(nomeCompleto, login, senha);
+        // Salva o novo usuário no localStorage
+        salvarUsuario(nomeCompleto, login, senha, cpf);
 
-        // Salva o nome completo e login no usuarioLogado
+        // Salva o nome completo e login no usuarioLogado (para login imediato após cadastro)
         localStorage.setItem('usuarioLogado', JSON.stringify({ nomeCompleto, login }));
 
         mostrarFeedback('Usuário cadastrado com sucesso!', 'success');
 
         setTimeout(() => {
-            window.location.href = 'pag-login.html';
+            window.location.href = 'pag-login.html'; // Redireciona para a página de login
         }, 2000);
     }
 });
+
+// Função para limpar a pontuação do CPF (remover pontos, hífens e espaços)
+function limparCpf(cpf) {
+    return cpf.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+}
