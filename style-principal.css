@@ -36,12 +36,12 @@ header > h1 {
     color: white;
     font-size: 20px;
     font-weight: 600;
-    margin-right: 970px;
+    margin-right: 1100px;
 }
 
 header nav {
     display: flex;
-    gap: 10px;
+    gap: 50px;
     margin: 0;
 }
 
@@ -447,8 +447,49 @@ footer {
 @media screen and (max-width: 768px) {
     header {
         flex-direction: column;
-        align-items: flex-start;
+        padding: 20px;
+    }
+
+    header .logo {
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    header > h1 {
+        margin-right: 0;
+        margin-bottom: 40px;
+        font-size: 20px;
         text-align: center;
+    }
+
+    header nav {
+        flex-direction: column;
+        gap: 5px;
+        
+    }
+
+    header nav a {
+        text-align: center;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    #dropdownMenuButton {
+        width: 100%;
+        text-align: center;
+    }
+
+    .header .menu ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .content p {
+        font-size: 0.9rem;
     }
 
     .text-container h1 {
