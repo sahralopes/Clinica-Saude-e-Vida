@@ -81,3 +81,5 @@ btnAjustarFonte.addEventListener('click', () => {
         ajusteFonteContainer.style.display = 'none';
     }
 });
+
+
